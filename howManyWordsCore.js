@@ -1,5 +1,5 @@
 const HowManyWords = (function (arrWords) {
-  const countQuestions = 25
+  const totalQuestions = 25
 
   function wordsKnownEstimate (words) {
     // assuming words are sorted by frequency
@@ -32,23 +32,28 @@ const HowManyWords = (function (arrWords) {
     let step = 2.5
     let previousAnswer
     let words = arrWords.map((x, i) => { return { word: x, index: i } })
+    let countQuestions = 0
+    let totalWords = words.length
 
     function getNextQuestion () {
-      if (words.filter(w => typeof w.known === 'boolean').length < countQuestions - 1) {
+      if (words.filter(w => typeof w.known === 'boolean').length < totalQuestions - 1) {
         if (previousAnswer !== undefined) {
           const modifier = 1
           step = Math.max(1.15, ((step - 1) * 0.91 + 1)) * modifier
           const multiplier = previousAnswer ? step : 1 / step
           const notAskedWords = words.filter(w => typeof w.known === 'undefined')
+          idx = idx * multiplier
+          idx = Math.ceil((2 / (1 + Math.exp(-2 * idx / totalWords)) - 1) * totalWords) // dampening
           idx = Math.max(Math.min(
-            Math.ceil(idx * multiplier),
-            notAskedWords.slice(-1)[0].index
+            idx,
+            notAskedWords.slice(-1)[0].index - 1
           ), notAskedWords.slice(0, 1)[0].index)
 
           while (words[idx].known !== undefined) {
             idx = idx + (multiplier < 1 ? 1 : -1)
           }
         }
+        countQuestions++
         return words[idx]
       }
     }
@@ -62,7 +67,12 @@ const HowManyWords = (function (arrWords) {
       return wordsKnownEstimate(words)
     }
 
+    function getProgress () {
+      return countQuestions / totalQuestions
+    }
+
     return {
+      getProgress,
       getResults,
       getNextQuestion,
       setAnswer

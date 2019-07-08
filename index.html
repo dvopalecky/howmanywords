@@ -11,6 +11,11 @@
 <body>
   <div class="content">
     <div id="initial">
+      <h3>How many words</h3>
+      <p style="width:60%;display:inline-block;">
+        This game tries to estimate the number of words you know in a given language.
+        You will be asked 25 words. Click yes (or press 'y') only for those words where you are sure about its definition.
+      </p>
       <form class="pure-form">
         Select language:
         <select name="" id="language">
@@ -30,6 +35,10 @@
     <div id="gameplay" style="display:none;">
       <p>Do you know this word?</p>
       <h3 id="current-word">rogue</h3>
+      <p id="current-word-detail"></p>
+      <div class="progress-wrap progress">
+        <div class="progress-bar progress"></div>
+      </div>
       <button id="yes" class="pure-button button-success button-large" onclick="pressAnswerButton(true)">Yes (y)</button>
       <button id="no" class="pure-button button-error button-large" onclick="pressAnswerButton(false)">No (n)</button>
     </div>

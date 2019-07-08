@@ -42,6 +42,8 @@ function displayNextQuestion () {
     gameOver()
   } else {
     document.querySelector('#current-word').textContent = question.word
+    document.querySelector('#current-word-detail').textContent = `(${question.index})`
+    document.querySelector('.progress-wrap .progress-bar').style.width = `${game.getProgress() * 100}%`
   }
 }
 
