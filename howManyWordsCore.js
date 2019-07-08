@@ -16,7 +16,8 @@ const HowManyWords = (function (arrWords) {
     const minUnknown = Math.min(...unknown) + 1
     const maxKnown = Math.max(...known) + 1
     // geometrical average
-    return Math.floor(Math.exp(((Math.log(minUnknown) + Math.log(maxKnown)) / 2)))
+    const result = Math.floor(Math.exp(((Math.log(minUnknown) + Math.log(maxKnown)) / 2)))
+    return result || 0
   }
 
   function knownAndUnknownWordsIndices (words) {

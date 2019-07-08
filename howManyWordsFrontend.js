@@ -56,3 +56,10 @@ function gameOver () {
   document.querySelector('#results').style.display = 'block'
   document.querySelector('#known-words-count').textContent = game.getResults()
 }
+
+document.body.addEventListener('keyup', function (event) {
+  if (document.querySelector('#gameplay').style.display === 'block') {
+    if (event.key.toLowerCase() === 'y') pressAnswerButton(true)
+    if (event.key.toLowerCase() === 'n') pressAnswerButton(false)
+  }
+})

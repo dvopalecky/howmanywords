@@ -39,6 +39,11 @@
   background: rgb(66, 184, 221); /* this is a light blue */
 }
 
+.button-large {
+  font-size: 110%;
+  padding: 0.5em 2em;
+}
+
 #current-word {
   font-weight: bold;
   font-size: 1.2em;
