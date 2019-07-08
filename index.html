@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>How many words</title>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="content">
+    <div id="initial">
+      <form class="pure-form">
+        Select language:
+        <select name="" id="language">
+          <option value="English">English</option>
+          <option value="Czech">Czech</option>
+          <option value="Spanish">Spanish</option>
+          <option value="French">French</option>
+          <option value="Italian">Italian</option>
+        </select>
+      </form>
+      <br>
+      <button class="pure-button button-primary" id="start-game" onclick="loadWordsAndStartGame()">
+        Start game
+      </button>
+    </div>
+
+    <div id="gameplay" style="display:none;">
+      <p>Do you know this word?</p>
+      <h3 id="current-word">rogue</h3>
+      <button id="yes" class="pure-button button-success" onclick="pressAnswerButton(true)">Yes</button>
+      <button id="no" class="pure-button button-error" onclick="pressAnswerButton(false)">No</button>
+    </div>
+
+    <div id="results" style="display:none;">
+      <p>
+        You know around <span id="known-words-count"></span> words.
+      </p>
+      <button class="pure-button button-primary" id="restart-game" onclick="restartGame()">Restart Game</button>
+    </div>
+  </div>
+</body>
+<script src="https://unpkg.com/papaparse"></script>
+<script src="wordsRaw.js"></script>
+<script src="howManyWordsCore.js"></script>
+<script src="howManyWordsFrontend.js"></script>
+</html>

@@ -1,0 +1,50 @@
+.content {
+  font-size: 22px;
+  padding-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+  max-width: 768px;
+  text-align: center;
+}
+
+.button-primary,
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-primary {
+  background: turquoise;
+}
+
+.button-success {
+  background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-error {
+  background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.button-warning {
+  background: rgb(223, 117, 20); /* this is an orange */
+}
+
+.button-secondary {
+  background: rgb(66, 184, 221); /* this is a light blue */
+}
+
+#current-word {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#known-words-count {
+  font-weight: bold;
+  font-size: 1.2em;
+}
