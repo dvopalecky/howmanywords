@@ -12,28 +12,39 @@
   <div class="content">
     <div id="initial">
       <h3>How many words</h3>
-      <p style="width:60%;display:inline-block;">
-        This game tries to estimate the number of words you know in a given language.
-        You will be asked 25 words. Click yes (or press 'y') only for those words where you are sure about its definition.
+      <p style="max-width:500px;display:inline-block;">
+        This game tries to estimate the number of lemmas (basic word forms) you know in a given language.
+        You will be asked 25 words.<br>
+        Click yes (or press "y") only for those words where you are sure about its definition.<br>
+        Click no (or press "n") if you don't know the word or are not exactly sure about the definition.
       </p>
       <form class="pure-form">
         Select language:
         <select name="" id="language">
           <option value="English">English</option>
           <option value="Czech">Czech</option>
-          <option value="Spanish">Spanish</option>
           <option value="French">French</option>
           <option value="Italian">Italian</option>
+          <option value="Spanish">Spanish</option>
         </select>
       </form>
       <br>
       <button class="pure-button button-primary" id="start-game" onclick="loadWordsAndStartGame()">
         Start game
       </button>
+      <br>
+      <div style="font-size:60%;margin-top:3em;">
+        Methodology (Technical details):<br>
+        <p>
+          - Get lemma frequency list from <a href="http://ucts.uniba.sk/aranea_about/index.html">Aranea</a> corpuses through <a href="https://www.korpus.cz/">korpus.cz</a><br>
+          - Remove all lemmas with uppercase characters (filter proper names)<br>
+          - Try to estimate the threshold where the user still knows words in the frequency list<br>
+        </p>
+      </div>
     </div>
 
     <div id="gameplay" style="display:none;">
-      <p>Do you know this word?</p>
+      <p>Do you know the definition of this word?</p>
       <h3 id="current-word">rogue</h3>
       <p id="current-word-detail"></p>
       <div class="progress-wrap progress">
@@ -45,7 +56,7 @@
 
     <div id="results" style="display:none;">
       <p>
-        You know around <span id="known-words-count"></span> words.
+        You know around <span id="known-words-count"></span> words (lemmas).
       </p>
       <button class="pure-button button-primary" id="restart-game" onclick="restartGame()">Restart Game</button>
     </div>
