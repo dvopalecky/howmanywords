@@ -14,7 +14,7 @@ function loadWordsAndStartGame () {
   if (words[language]) {
     startGame()
   } else {
-    Papa.parse(`/${language.toLowerCase()}-lowercase-only.csv`, {
+    Papa.parse(`/frequency-lists/final/${language.toLowerCase()}.csv`, {
       download: true,
       complete: function (results) {
         words[language] = results.data
